@@ -20,7 +20,7 @@ class Post(models.Model):
         ('published', 'Published')
     ]
 
-    title = models.CharField(max_lenght=250)
+    title = models.CharField(max_length=250)
     slug = models.SlugField(
         max_length=250,
         allow_unicode=True,
@@ -34,13 +34,12 @@ class Post(models.Model):
         max_length=10,
         choices=STATUS_CHOICES,
         default='draft')
-    readtime = models.IntegerField(editable=False)
+    readtime = models.IntegerField(editable=True)
     objects = models.Manager()
     published = PublishManager()
 
     class Meta:
-        ordering = ('-published')
-        db_table = ('blog_post')
+        ordering = ('-publish',)
 
-    def get_absolute_url(self):
-        pass
+    # def get_absolute_url(self):
+    #     pass
