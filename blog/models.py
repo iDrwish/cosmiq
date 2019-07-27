@@ -3,6 +3,8 @@ from django.contrib.auth.models import User
 from django.utils.text import slugify
 from django.utils import timezone
 from django.urls import reverse
+from taggit.managers import TaggableManager
+
 
 class PublishManager(models.Manager):
     def get_queryset(self):
@@ -37,12 +39,10 @@ class Post(models.Model):
     readtime = models.IntegerField(editable=True)
     objects = models.Manager()
     published = PublishManager()
+    tags = TaggableManager()
 
     class Meta:
         ordering = ('-publish',)
 
     def get_absolute_url(self):
         return reverse('post-detail', args=[self.slug])
-
-    # def get_absolute_url(self):
-    #     pass
