@@ -7,3 +7,9 @@ from .models import Post
 class PostList(ListView):
     model = Post
     queryset = Post.published.all()
+    template_name = 'blog/Post/post_list.html'
+
+
+class PostDetail(DetailView):
+    model = Post
+    template_name = 'blog/Post/post_detail.html'
