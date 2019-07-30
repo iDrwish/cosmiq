@@ -1,7 +1,20 @@
 {% extends "blog/base.html" %}
-{% block title %}{{ object.title }}{% endblock %}
+{% block title %}{{ post.title }}{% endblock %}
 
 
 {% block content %}
-<p>{{ object.body }}</p>
+<p>{{ post.body }}</p>
+
+
+<hr>
+<h2>Simialr Posts</h2>
+{% for post in similar_posts %}
+<p>
+    <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
+</p>
+{% empty %}
+There are no similar posts yet.
+{% endfor %}
 {% endblock %}
+
+
