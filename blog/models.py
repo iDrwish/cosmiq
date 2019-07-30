@@ -4,6 +4,7 @@ from django.utils.text import slugify
 from django.utils import timezone
 from django.urls import reverse
 from taggit.managers import TaggableManager
+import readtime
 
 
 class PublishManager(models.Manager):
@@ -36,13 +37,17 @@ class Post(models.Model):
         max_length=10,
         choices=STATUS_CHOICES,
         default='draft')
-    readtime = models.IntegerField(editable=True)
+    readtime = models.IntegerField(editable=False)
     objects = models.Manager()
     published = PublishManager()
-    tags = TaggableManager()
+    tags = TaggableManager(blank=True)
 
     class Meta:
         ordering = ('-publish',)
 
     def get_absolute_url(self):
-        return reverse('post-detail', args=[self.slug])
+        return reverse('post_detail', args=[self.slug])
+
+    def save(self, *args, **kwargs):
+        self.readtime = readtime.of_text(self.body).minutes
+        super(Post, self).save(*args, **kwargs)  # Call the real save() method

@@ -5,11 +5,11 @@ from .models import Post
 
 
 class PostAdmin(admin.ModelAdmin):
-    fields = (
+    fields = [
         'title', 'slug', 'author', 'body',
-        'publish', 'status', 'readtime', 'tag_list'
-        )
-    list_display = fields
+        'publish', 'status', 'tags'
+        ]
+    list_display = fields[:-1] + ['tag_list']
     prepopulated_fields = {'slug': ('title', )}
     list_filter = ('status', 'created', 'publish', 'author', 'tags')
     date_hierarchy = ('created')
@@ -20,7 +20,9 @@ class PostAdmin(admin.ModelAdmin):
         return super().get_queryset(request).prefetch_related('tags')
 
     def tag_list(self, obj):
-        return u", ".join(o.name for o in obj.tags.all())
+        if obj.tags.all():
+            return u", ".join(o.name for o in obj.tags.all())
+        return None
 
 
 admin.site.register(Post, PostAdmin)
