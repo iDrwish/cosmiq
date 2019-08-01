@@ -58,7 +58,17 @@ class Comment(models.Model):
     """
     Comment Section
     """
-
     post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='post_comment')
     name = models.CharField(max_length=100)
     email = models.EmailField()
+    comment = models.TextField(blank=False)
+    creation_date = models.DateTimeField(auto_now_add=True)
+    last_edited = models.DateTimeField(auto_now=True)
+    active = models.BooleanField(default=True)
+
+
+    class Meta:
+        ordering = ('-creation_date')
+
+    def __str__(self):
+        return 'Comment by {}: {}'.format(self.name, self.body)
