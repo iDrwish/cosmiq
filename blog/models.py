@@ -71,4 +71,6 @@ class Comment(models.Model):
         ordering = ('-creation_date')
 
     def __str__(self):
-        return 'Comment by {}: {}'.format(self.name, self.body)
+        return 'Comment by {}: {}'.format(self.name, self.comment)
+
+    

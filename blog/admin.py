@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Post
+from .models import Post, Comment
 
 # Register your models here.
 
@@ -25,4 +25,12 @@ class PostAdmin(admin.ModelAdmin):
         return None
 
 
+class CommentAdmin(admin.ModelAdmin):
+    list_display = ['name', 'email', 'comment', 'creation_date', 'last_edited', 'active']
+    list_filter = ['name', 'email', 'active']
+    date_hierarchy = ('creation_date')
+    search_fields = ['name', 'email', 'comment']
+
+
 admin.site.register(Post, PostAdmin)
+admin.site.register(Comment, CommentAdmin)
