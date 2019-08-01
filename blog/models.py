@@ -1,4 +1,5 @@
 from django.db import models
+from django.db import models
 from django.contrib.auth.models import User
 from django.utils.text import slugify
 from django.utils import timezone
@@ -51,3 +52,13 @@ class Post(models.Model):
     def save(self, *args, **kwargs):
         self.readtime = readtime.of_text(self.body).minutes
         super(Post, self).save(*args, **kwargs)  # Call the real save() method
+
+
+class Comment(models.Model):
+    """
+    Comment Section
+    """
+
+    post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='post_comment')
+    name = models.CharField(max_length=100)
+    email = models.EmailField()
