@@ -68,7 +68,7 @@ class Comment(models.Model):
 
 
     class Meta:
-        ordering = ('-creation_date')
+        ordering = ('-creation_date',)
 
     def __str__(self):
         return 'Comment by {}: {}'.format(self.name, self.comment)
