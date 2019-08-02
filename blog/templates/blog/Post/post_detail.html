@@ -15,6 +15,23 @@
 {% empty %}
 There are no similar posts yet.
 {% endfor %}
+<hr>
+<h2>Comments</h2>
+{% for comment in post_comments %}
+<p>
+    {{ comment.comment }} by {{ comment.name }}
+</p>
+{% empty %}
+There are no comments yet.
+{% endfor %}
+
+<hr>
+<form action="{{ post.get_absolute_url }}" method="post">
+    {{ comment_form }}
+    {% csrf_token %}
+    <input type="submit" class="button" value="Comment now">
+    </form>
+
 {% endblock %}
 
 
