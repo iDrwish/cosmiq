@@ -4,7 +4,11 @@ from django.contrib.auth.models import User
 from django.utils.text import slugify
 from django.utils import timezone
 from django.urls import reverse
+from django.contrib.contenttypes.models import ContentType
+from django.contrib.contenttypes.fields import GenericForeignKey
 from taggit.managers import TaggableManager
+from markdownx.models import MarkdownxField
+from markdownx.utils import markdownify
 import readtime
 
 
@@ -30,7 +34,7 @@ class Post(models.Model):
         allow_unicode=True,
         unique_for_date='publish')
     author = models.ForeignKey(User, on_delete=models.CASCADE)
-    body = models.TextField()
+    body = MarkdownxField()
     publish = models.DateTimeField(default=timezone.now)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
@@ -53,6 +57,10 @@ class Post(models.Model):
         self.readtime = readtime.of_text(self.body).minutes
         super(Post, self).save(*args, **kwargs)  # Call the real save() method
 
+    @property
+    def formatted_markdown(self):
+        return markdownify(self.body)
+
 
 class Comment(models.Model):
     """
@@ -73,4 +81,11 @@ class Comment(models.Model):
     def __str__(self):
         return 'Comment by {}: {}'.format(self.name, self.comment)
 
-    
+
+class Like(models.Model):
+    user = models.ForeignKey(User, related_name='action', db_index=True,
+        on_delete=models.CASCADE)
+    object_id = models.PositiveIntegerField()
+    content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
+    content_object = GenericForeignKey('content_type', 'object_id')
+    created = models.DateTimeField(auto_now_add=True) 
