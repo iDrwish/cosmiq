@@ -72,9 +72,6 @@ class CommentFormView(SingleObjectMixin, FormView):
         return super(CommentFormView, self).form_valid(form)
 
     def get_context_data(self, **kwargs):
-        """
-        Get the context for this view.
-        """
         kwargs['comment_form'] = kwargs.pop('form')
         return super(CommentFormView, self).get_context_data(**kwargs)
 

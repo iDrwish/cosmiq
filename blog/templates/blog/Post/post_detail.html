@@ -3,7 +3,9 @@
 
 
 {% block content %}
-<p>{{ post.body }}</p>
+<p>{{ post.readtime }} minute read</p>
+<p>{{ post.formatted_markdown|safe }}</p>
+
 
 
 <hr>
@@ -25,12 +27,28 @@ There are no similar posts yet.
 There are no comments yet.
 {% endfor %}
 
+<div>
+    {% load social_share %}
+
+    {% post_to_facebook post "Post to Facebook!" %}
+    {% post_to_twitter "New Song: {{ post.title }}. Check it out!" post "Post to Twitter" %}
+    {% post_to_gplus post "Post to Google+!" %}
+    {% post_to_linkedin post.title post "Post to LinkedIn" %}
+    {% send_email post.title "New Song: {{ post.title }}. Check it out!" post "Share via email" %}
+    {% post_to_reddit "New Song: {{post.title}}" post%}
+    {% post_to_telegram "New Song: {{post.title}}" post %}
+
+</div>
+
 <hr>
 <form action="{{ post.get_absolute_url }}" method="post">
     {{ comment_form }}
     {% csrf_token %}
     <input type="submit" class="button" value="Comment now">
-    </form>
+</form>
+
+<hr>
+    
 
 {% endblock %}
 

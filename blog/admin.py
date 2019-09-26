@@ -1,8 +1,8 @@
 from django.contrib import admin
 from .models import Post, Comment
+from markdownx.admin import AdminMarkdownxWidget
 
 # Register your models here.
-
 
 class PostAdmin(admin.ModelAdmin):
     fields = [
@@ -15,6 +15,7 @@ class PostAdmin(admin.ModelAdmin):
     date_hierarchy = ('created')
     raw_id_fields = ('author', )
     search_fields = ('title', 'body')
+    formfield_overrides = {'body': {'widget': AdminMarkdownxWidget}}
 
     def get_queryset(self, request):
         return super().get_queryset(request).prefetch_related('tags')

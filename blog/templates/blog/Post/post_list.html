@@ -6,7 +6,8 @@
 <h1>This is the h1 title</h1>
 {% for post in blog_posts %}
 <h2>
-    <a href="{{ post.get_absolute_url }}">{{ post.title }} {{ post.readtime }} minute read time {{ post.created }}</a>
+    <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
+    <p>{{ post.readtime }} minute read, published on {{ post.created }}</p>
    
     {% if post.tags.all|length > 0 %}
     <p class="tags">
