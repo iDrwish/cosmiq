@@ -6,6 +6,7 @@ from django.views import View
 from django.shortcuts import get_object_or_404
 from django.db.models import Count
 from django.shortcuts import redirect
+from django.core.cache import cache
 from taggit.models import Tag
 from django.urls import reverse_lazy, reverse
 from .models import Post, Comment
@@ -37,7 +38,18 @@ class PostDetail(DetailView):
 
         Similar functions by Tag and ordered by Count and Date
         """
+        # Get the object being called
         self.object = self.get_object()
+        # Get the views and increment, if not available create it
+        post_cache_key = 'blog-post-{}'.format(self.object.id)
+        post_views_count = cache.get(post_cache_key)
+        if post_views_count:
+            cache.incr(post_cache_key, 1)
+        else:
+            post_views_count = 1
+            cache.add(post_cache_key, post_views_count)
+            
+
         # get post tags
         post_tags = self.object.tags.values_list('id', flat=True)
         # get similar posts by tag
@@ -45,11 +57,11 @@ class PostDetail(DetailView):
             .exclude(id=self.object.id))
         similar_posts = (similar_posts.annotate(same_tags=Count('tags'))
             .order_by('-same_tags', '-publish'))[:4]
-
         post_comments = Comment.objects.filter(post=self.object)
         context = self.get_context_data(object=self.object)
         context['post_comments'] = post_comments
         context['similar_posts'] = similar_posts
+        context['post_views_count'] = post_views_count
         return self.render_to_response(context)
 
     def get_context_data(self, **kwargs):

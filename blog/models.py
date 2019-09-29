@@ -6,6 +6,7 @@ from django.utils import timezone
 from django.urls import reverse
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes.fields import GenericForeignKey
+from django.contrib.sites.models import Site
 from taggit.managers import TaggableManager
 from markdownx.models import MarkdownxField
 from markdownx.utils import markdownify
@@ -46,6 +47,10 @@ class Post(models.Model):
     objects = models.Manager()
     published = PublishManager()
     tags = TaggableManager(blank=True)
+    # sites = models.ForeignKey(Site, on_delete=models.CASCADE, 
+    #     null=True, blank=True
+    #     # SET_DEFAULT=None
+    #     )
 
     class Meta:
         ordering = ('-publish',)
@@ -88,4 +93,13 @@ class Like(models.Model):
     object_id = models.PositiveIntegerField()
     content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
     content_object = GenericForeignKey('content_type', 'object_id')
-    created = models.DateTimeField(auto_now_add=True) 
+    created = models.DateTimeField(auto_now_add=True)
+
+# TODO Create the Author Model
+# TODO Add Cookies to the website
+# TODO Add Cahching for web views
+# TODO Add Text search
+# TODO Migrate to postgres
+
+# DONE
+# TODO Add cahcing for web views counts

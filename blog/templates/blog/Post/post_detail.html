@@ -6,6 +6,8 @@
 {% block content %}
 <p>{{ post.readtime }} minute read</p>
 <p>{{ post.body|markdown_prettify|safe}}</p>
+<hr>
+<h4>Post Views {{ post_views_count }}</h4>
 
 
 
