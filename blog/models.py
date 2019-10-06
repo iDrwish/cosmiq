@@ -48,9 +48,7 @@ class Post(models.Model):
     published = PublishManager()
     tags = TaggableManager(blank=True)
     # sites = models.ForeignKey(Site, on_delete=models.CASCADE, 
-    #     null=True, blank=True
-    #     # SET_DEFAULT=None
-    #     )
+    #     null=True, blank=True)
 
     class Meta:
         ordering = ('-publish',)
@@ -97,9 +95,12 @@ class Like(models.Model):
 
 # TODO Create the Author Model
 # TODO Add Cookies to the website
-# TODO Add Cahching for web views
-# TODO Add Text search
-# TODO Migrate to postgres
+
+
+# TODO Handle the same DB for different sites
 
 # DONE
 # TODO Add cahcing for web views counts
+# TODO Add Cahching for web views
+# TODO Add Text search
+# TODO Migrate to Postgres

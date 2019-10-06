@@ -139,4 +139,5 @@ media/
 .DS_Store
 cosmiq/settings.py
 cosmiq/settings/*
+config/
 db.sqlite3

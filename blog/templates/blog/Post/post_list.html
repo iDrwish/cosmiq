@@ -3,7 +3,21 @@
 {% block title %}This is my blog{% endblock %}
 
 {% block content %}
+
+
+<hr>
+
 <h1>This is the h1 title</h1>
+
+{% if query %}
+<h1>Posts Containing {{ query }}</h1>
+<h3>{% with blog_posts.count as total_count %}
+  Found {{ total_count }} Post{{ total_count|pluralize  }}
+  {% endwith %}
+</h3>
+{% endif %}
+
+
 {% for post in blog_posts %}
 <h2>
     <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
@@ -24,8 +38,22 @@
  {% endif %}
  <hr>
 </h2>
+
+{% empty %}
+<p>There are no posts for your query.</p>
+
 {% endfor %}
+
+<h1>Search Bar</h1>
+<form method="get">
+  {% csrf_token %}
+  {{ query_form }}
+  <input type="submit" value="Send message">
+</form>
+
 {% endblock %}
+
+
 
 
 
