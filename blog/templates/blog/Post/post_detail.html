@@ -51,8 +51,15 @@ There are no comments yet.
 </form>
 
 <hr>
-    
 
+<div>
+<h1>Search Bar</h1>
+<form actions='{% url 'post_list' %}'  method="get" >
+  {% csrf_token %}
+  {{ query_form }}
+  <input type="submit" value="Send message">
+</form>
+</div>
 {% endblock %}
 
 
