@@ -134,7 +134,8 @@ tmtags
 #django production
 static/
 media/
-
+ssl/
+ssl/*
 # OS files
 .DS_Store
 cosmiq/settings.py
