@@ -19,7 +19,7 @@ CACHES = {
 
 if DATABASE_URL:
     DATABASES = {}
-    DATABASES['DEFAULT'] = connection_url.config(DATABASE_URL)
+    DATABASES['default'] = connection_url.config(DATABASE_URL)
 elif PROD_DB_NAME:
     DATABASES = {
     'default': {
