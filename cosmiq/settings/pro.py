@@ -2,7 +2,7 @@ import connection_url
 from .base import *
 
 
-DEBUG = False
+DEBUG = True
 # SECURE_SSL_REDIRECT = True
 
 ADMINS = (
