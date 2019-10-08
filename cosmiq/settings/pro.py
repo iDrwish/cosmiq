@@ -1,3 +1,4 @@
+import connection_url
 from .base import *
 
 
@@ -16,7 +17,11 @@ CACHES = {
     }
 }
 
-DATABASES = {
+if DATABASE_URL:
+    DATABASES = {}
+    DATABASES['DEFAULT'] = connection_url.config(DATABASE_URL)
+elif PROD_DB_NAME:
+    DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': PROD_DB_NAME,
@@ -24,3 +29,6 @@ DATABASES = {
         'PASSWORD': PROD_DB_PWD
     }
     }
+
+
+
