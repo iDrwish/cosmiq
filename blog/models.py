@@ -47,8 +47,6 @@ class Post(models.Model):
     objects = models.Manager()
     published = PublishManager()
     tags = TaggableManager(blank=True)
-    # sites = models.ForeignKey(Site, on_delete=models.CASCADE, 
-    #     null=True, blank=True)
 
     class Meta:
         ordering = ('-publish',)
