@@ -21,7 +21,9 @@ BASE_DIR =os.path.dirname(os.path.dirname(os.path.abspath(os.path.join(__file__,
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
+
 SECRET_KEY = os.environ.get('SECRET_KEY')
+DATABASE_URL = os.environ.get('DATABASE_URL')
 PROD_DB_NAME = os.environ.get('PROD_DB_NAME')
 PROD_DB_USER = os.environ.get('PROD_DB_USER')
 PROD_DB_PWD = os.environ.get('PROD_DB_PWD')
@@ -141,3 +143,6 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 SITE_ID = 1
+
+import django_heroku
+django_heroku.settings(locals())
