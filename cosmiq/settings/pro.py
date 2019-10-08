@@ -2,13 +2,13 @@ import connection_url
 from .base import *
 
 
-DEBUG = False
+DEBUG = True
 # SECURE_SSL_REDIRECT = True
 
 ADMINS = (
        ('Mohamed Darwish', 'i@cosmiq.io'),)
 
-ALLOWED_HOSTS = ['cosmiq.io', 'www.cosmiq.io', '127.0.0.1']
+ALLOWED_HOSTS = ['cosmiq.io', 'www.cosmiq.io', 'cosmiq.heroku.com', '*']
 
 CACHES = {
     'default': {
