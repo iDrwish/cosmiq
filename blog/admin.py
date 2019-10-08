@@ -32,6 +32,5 @@ class CommentAdmin(admin.ModelAdmin):
     date_hierarchy = ('creation_date')
     search_fields = ['name', 'email', 'comment']
 
-
-admin.site.register(Post, PostAdmin)
 admin.site.register(Comment, CommentAdmin)
+admin.site.register(Post, PostAdmin)
