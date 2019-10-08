@@ -138,7 +138,9 @@ ssl/
 ssl/*
 # OS files
 .DS_Store
-cosmiq/settings.py
-cosmiq/settings/*
 config/
 db.sqlite3
+*.env
+*.sh
+.env
+.profile
