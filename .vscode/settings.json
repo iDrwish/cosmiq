@@ -1,4 +1,42 @@
 {
     "python.pythonPath": "env/bin/python",
-    "sqltools.useNodeRuntime": true
+    "sqltools.useNodeRuntime": true,
+    "sqltools.connections": [
+        {
+            "connectionTimeout": 120,
+            "database": "dev",
+            "dialect": "AWS Redshift",
+            "name": "Analytics",
+            "password": "2wsx3edcHalan64321",
+            "port": 5439,
+            "server": "redshift-wokrdb-2.c9ct2spwk7hb.us-east-2.redshift.amazonaws.com",
+            "username": "halandbadmin"
+        },
+        {
+            "askForPassword": false,
+            "connectionTimeout": 30,
+            "database": "pythia_main",
+            "dialect": "MySQL",
+            "name": "AWS Lambda MySQL",
+            "password": "nnZb4czXPWAwMvvuAMRTWm",
+            "port": 3306,
+            "server": "pythia-db.ccuraqherjfr.us-east-2.rds.amazonaws.com",
+            "username": "Pythia_user"
+        },
+        {
+            "askForPassword": true,
+            "database": "./db.sqlite3",
+            "dialect": "SQLite",
+            "name": "SQL LITE"
+        },
+        {
+            "database": "Cosmiq",
+            "dialect": "PostgreSQL",
+            "name": "PostGres",
+            "password": "@Sonabar911",
+            "port": 5432,
+            "server": "localhost",
+            "username": "Cosmiq"
+        }
+    ]
 }
