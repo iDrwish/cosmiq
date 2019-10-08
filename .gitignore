@@ -132,10 +132,12 @@ tmtags
 *.db
 
 #django production
-static/
+
+staticfiles/
 media/
 ssl/
 ssl/*
+
 # OS files
 .DS_Store
 config/
