@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.sitemaps',
     'blog',
+    'ai',
     'taggit',
     'django_social_share',
     'markdownx'
