@@ -146,5 +146,5 @@ db.sqlite3
 *.sh
 .env
 .profile
-slack/fixtures/
+slack_messaging/fixtures/*
 ngrok
