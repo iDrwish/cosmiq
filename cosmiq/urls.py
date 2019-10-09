@@ -32,6 +32,7 @@ urlpatterns = [
     path('markdownx/', include('markdownx.urls')),
     path('blog/', include('blog.urls'), name='blog'),
     path('', PostList.as_view(), name='root_post_list'),
+    path('api-auth/', include('rest_framework.urls')),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

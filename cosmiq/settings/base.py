@@ -54,7 +54,9 @@ INSTALLED_APPS = [
     'ai',
     'taggit',
     'django_social_share',
-    'markdownx'
+    'markdownx',
+    'rest_framework',
+    'slack'
 ]
 
 MIDDLEWARE = [
@@ -156,6 +158,16 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+
+# REST Framework
+REST_FRAMEWORK = {
+    # Use Django's standard `django.contrib.auth` permissions,
+    # or allow read-only access for unauthenticated users.
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+    ]
+}
 
 # SITE_ID = 1
 django_heroku.settings(locals())
