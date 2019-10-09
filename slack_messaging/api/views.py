@@ -27,5 +27,7 @@ class UpdateMessage(APIView):
             original_message = load.get('original_message')
             original_message['replace_original'] = True
             original_message["text"] = ":white_check_mark: <@{}> *marked this done.*".format(user_id)
+            _a, attch2 = original_message.get('attachments')
+            attch2.pop('actions')
             return Response(original_message, status=200)
         return HttpResponse(status=200)
