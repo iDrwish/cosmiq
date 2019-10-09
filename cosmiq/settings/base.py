@@ -56,7 +56,7 @@ INSTALLED_APPS = [
     'django_social_share',
     'markdownx',
     'rest_framework',
-    'slack'
+    'slack_messaging',
 ]
 
 MIDDLEWARE = [
@@ -165,7 +165,7 @@ REST_FRAMEWORK = {
     # Use Django's standard `django.contrib.auth` permissions,
     # or allow read-only access for unauthenticated users.
     'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+        'rest_framework.permissions.AllowAny'
     ]
 }
 

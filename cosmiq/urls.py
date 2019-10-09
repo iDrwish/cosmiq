@@ -23,6 +23,7 @@ from django.conf.urls.static import static
 from django.contrib.sitemaps.views import sitemap
 from blog.sitemaps import PostSiteMap
 
+
 sitemaps = {'Post': PostSiteMap}
 
 urlpatterns = [
@@ -31,8 +32,9 @@ urlpatterns = [
     name='django.contrib.sitemaps.views.sitemap'),
     path('markdownx/', include('markdownx.urls')),
     path('blog/', include('blog.urls'), name='blog'),
-    path('', PostList.as_view(), name='root_post_list'),
     path('api-auth/', include('rest_framework.urls')),
+    path('api/slack_messaging/', include('slack_messaging.api.urls')),
+    path('', PostList.as_view(), name='root_post_list'),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
