@@ -19,7 +19,6 @@ class UpdateMessage(APIView):
     @csrf_exempt
     def post(self, request, format=None):
         load = json.loads(request.data['payload'])
-        print(load, type(load))
         if load['type'] == 'interactive_message':
             # callback_id = load.get('callback_id')
             # response_url = load.get('response_url')
