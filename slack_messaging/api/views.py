@@ -18,6 +18,15 @@ class UpdateMessage(APIView):
     authentication_classes = (CsrfExemptSessionAuthentication, BasicAuthentication)
     @csrf_exempt
     def post(self, request, format=None):
-        load = request.data['payload']
-        print(load)
+        load = json.loads(request.data['payload'])
+        print(load, type(load))
+        if load['type'] == 'interactive_message':
+            # callback_id = load.get('callback_id')
+            # response_url = load.get('response_url')
+            # channel_name = load.get('channel', {}).get('name')
+            user_id= load.get('user', {}).get('id')
+            original_message = load.get('original_message')
+            original_message['replace_original'] = True
+            original_message["text"] = ":white_check_mark: <@{}> *marked this done.*".format(user_id)
+            return Response(original_message, status=200)
         return HttpResponse(status=200)
