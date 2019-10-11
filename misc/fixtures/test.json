@@ -1,0 +1,70 @@
+{
+    "type": "interactive_message",
+    "actions": [
+        {
+            "name": "Action",
+            "type": "button",
+            "value": "Mark as Done"
+        }
+    ],
+    "callback_id": "5d0f55cc30418301d7647c14_2019_10_09_20_19",
+    "team": {
+        "id": "TBYPFQ02F",
+        "domain": "halan-group"
+    },
+    "channel": {
+        "id": "CN195V5LL",
+        "name": "delivery-liveops"
+    },
+    "user": {
+        "id": "UFWV5EMJ9",
+        "name": "mohamed.darwish"
+    },
+    "action_ts": "1570645766.295591",
+    "message_ts": "1570645159.014100",
+    "attachment_id": "2",
+    "token": "LQqvcIaU2kzxdILqOsyPKXvV",
+    "is_app_unfurl": false,
+    "original_message": {
+        "type": "message",
+        "subtype": "bot_message",
+        "text": "",
+        "ts": "1570645159.014100",
+        "bot_id": "BP34R6V5E",
+        "attachments": [
+            {
+                "author_name": "H360",
+                "fallback": "Branch Details",
+                "text": "Branch Number: 01280040153",
+                "pretext": "Halan Delivery Tracker",
+                "title": "KFC-El Ebrhimya",
+                "id": 1,
+                "author_icon": "https://www.halan.com/assets/img/logo/logo.png",
+                "color": "DBDBDB"
+            },
+            {
+                "author_name": "Driver Away from Branch",
+                "callback_id": "5d0f55cc30418301d7647c14_2019_10_09_20_19",
+                "fallback": "Driver Away from Branch",
+                "text": "Driver is *3580.16* meters away from the Branch",
+                "title": "احمد مجدي محمد احمد - 01211776421",
+                "footer": "5d0f55cc30418301d7647c14",
+                "id": 2,
+                "ts": 1570645158,
+                "color": "ffae42",
+                "actions": [
+                    {
+                        "id": "1",
+                        "name": "Action",
+                        "text": "Mark as Done",
+                        "type": "button",
+                        "value": "Mark as Done",
+                        "style": "primary"
+                    }
+                ]
+            }
+        ]
+    },
+    "response_url": "https://hooks.slack.com/actions/TBYPFQ02F/789237255684/9qusbEdjVEGZHNqmHmA3eGld",
+    "trigger_id": "783269162929.406797816083.9dccc698a581bb60dc9c3cb357b305d4"
+}

@@ -33,7 +33,7 @@ urlpatterns = [
     path('markdownx/', include('markdownx.urls')),
     path('blog/', include('blog.urls'), name='blog'),
     path('api-auth/', include('rest_framework.urls')),
-    path('api/slack_messaging/', include('slack_messaging.api.urls')),
+    path('misc/', include('misc.api.urls')),
     path('', PostList.as_view(), name='root_post_list'),
 ]
 

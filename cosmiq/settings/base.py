@@ -56,7 +56,7 @@ INSTALLED_APPS = [
     'django_social_share',
     'markdownx',
     'rest_framework',
-    'slack_messaging',
+    'misc',
 ]
 
 MIDDLEWARE = [
