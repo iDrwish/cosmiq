@@ -151,3 +151,4 @@ ngrok
 .vscode
 .vscode/*
 vscode/*
+.git.bfg-report
