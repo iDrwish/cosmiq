@@ -148,3 +148,5 @@ db.sqlite3
 .profile
 slack_messaging/fixtures/*
 ngrok
+.vscode
+.vscode/
