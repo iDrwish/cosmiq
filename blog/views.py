@@ -142,4 +142,4 @@ class PostPage(View):
 
 
 def adjust_testing_view(request):
-    return render(request, 'blog/post/adjust_testing.html')
+    return render(request, 'blog/Post/adjust_testing.html')
