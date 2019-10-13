@@ -139,3 +139,7 @@ class PostPage(View):
     def post(self, request, *args, **kwargs):
         view = CommentFormView.as_view()
         return view(request, *args, **kwargs)
+
+
+def adjust_testing_view(request):
+    return render(request, 'blog/post/adjust_testing.html')
