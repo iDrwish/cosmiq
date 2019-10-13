@@ -1,8 +1,14 @@
+import os
 import connection_url
 from .base import *
 
 
-DEBUG = False
+DEBUG = os.environ.get('DEBUG')
+if DEBUG == 'TRUE':
+    DEBUG = True
+else:
+    DEBUG = False
+
 # SECURE_SSL_REDIRECT = True
 
 ADMINS = (
