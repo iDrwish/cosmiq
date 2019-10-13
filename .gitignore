@@ -150,4 +150,9 @@ slack_messaging/fixtures/*
 ngrok
 .vscode
 .vscode/*
+<<<<<<< HEAD
 vscode/* 
+=======
+vscode/*
+.git.bfg-report
+>>>>>>> 71642e3956f22d665b8cdcbd8a1dfae89c20fa2b
