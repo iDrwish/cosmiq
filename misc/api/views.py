@@ -38,6 +38,6 @@ class UpdateMessage(APIView):
 def getOS(request):
     a = request.META.get('HTTP_USER_AGENT')
     if ('iphone' in a.lower()) or ('macintosh' in a.lower()) or ('ipad' in a.lower()):
-        redirect('https://apps.apple.com/app/halan-driver/id1463180488')
+        return redirect('https://apps.apple.com/app/halan-driver/id1463180488')
     else:
-        redirect('https://play.google.com/store/apps/details?id=com.halan.halandriver')
+        return redirect('https://play.google.com/store/apps/details?id=com.halan.halandriver')
