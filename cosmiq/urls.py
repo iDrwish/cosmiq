@@ -33,7 +33,7 @@ urlpatterns = [
     path('markdownx/', include('markdownx.urls')),
     path('blog/', include('blog.urls'), name='blog'),
     path('api-auth/', include('rest_framework.urls')),
-    path('misc/', include('misc.api.urls')),
+    path('api/', include('misc.api.urls')),
     path('', PostList.as_view(), name='root_post_list'),
 ]
 

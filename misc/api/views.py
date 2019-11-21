@@ -1,8 +1,10 @@
 import json
-from django.shortcuts import render
+import pdb
+from django.shortcuts import render, redirect
 from rest_framework.views import APIView
 from rest_framework.parsers import JSONParser
 from rest_framework.response import Response
+from rest_framework.serializers import Serializer
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from braces.views import CsrfExemptMixin
@@ -31,3 +33,11 @@ class UpdateMessage(APIView):
             attch2.pop('actions')
             return Response(original_message, status=200)
         return HttpResponse(status=200)
+
+
+def getOS(request):
+    a = request.META.get('HTTP_USER_AGENT')
+    if ('iphone' in a.lower()) or ('macintosh' in a.lower()) or ('ipad' in a.lower()):
+        redirect('https://apps.apple.com/app/halan-driver/id1463180488')
+    else:
+        redirect('https://play.google.com/store/apps/details?id=com.halan.halandriver')
