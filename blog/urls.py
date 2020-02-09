@@ -11,5 +11,5 @@ urlpatterns = [
     path(
         'tag/<slug:tag_slug>', views.PostList.as_view(),
         name='post_list_by_tag'),
-    
+
 ]

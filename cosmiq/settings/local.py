@@ -16,11 +16,11 @@ CACHES = {
     }
 }
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': LOCAL_DB_NAME,
-        'USER': LOCAL_DB_USER,
-        'PASSWORD': LOCAL_DB_PWD
-    }
-    }
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': LOCAL_DB_NAME,
+#         'USER': LOCAL_DB_USER,
+#         'PASSWORD': LOCAL_DB_PWD
+#     }
+#     }

@@ -1,3 +1,8 @@
+import requests
+import os
+import json
+import time
+
 import json
 import pdb
 import boto3
@@ -11,6 +16,9 @@ from django.views.decorators.csrf import csrf_exempt
 from braces.views import CsrfExemptMixin
 from rest_framework.authentication import SessionAuthentication, BasicAuthentication
 from datetime import datetime as dt
+
+
+SLACK_CHANNEL = 'https://hooks.slack.com/services/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'
 
 
 class CsrfExemptSessionAuthentication(SessionAuthentication):
@@ -62,4 +70,27 @@ def adjustParameters(request):
             **params)
         s3.put_object(Body=json.dumps(queryParameters),
                       Bucket='halan-adjust-callback', Key=Key+fileName+'.json')
+    return HttpResponse(status=200)
+
+
+def adjustForwardParameters(request):
+    queryParameters = request.GET.dict()
+    if queryParameters:
+        fields = [{"title": key, "value": val, "short": False}
+                  for key, val in queryParameters.items()]
+
+        attachments_template = [
+            {
+                "fallback": "Adjust Event",
+                "fields": fields,
+                "footer": "Adjust Event",
+                "footer_icon": "https://media.trustradius.com/vendor-logos/TS/n3/3CA3NTA4AFT9-180x180.PNG",
+                "ts": int(time.time())
+            }
+        ]
+
+        payload = {"text": "Event {} with Token {}.".format(queryParameters.get(
+            'event_name'), queryParameters.get('event_token')), "attachments": attachments_template}
+
+        response = requests.post(SLACK_CHANNEL, data=json.dumps(payload))
     return HttpResponse(status=200)
