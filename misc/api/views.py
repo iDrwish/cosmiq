@@ -90,7 +90,7 @@ def adjustForwardParameters(request):
         ]
 
         payload = {"text": "Event {} with Token {}.".format(queryParameters.get(
-            'event_name'), queryParameters.get('event_token')), "attachments": attachments_template}
+            'event_name'), queryParameters.get('event')), "attachments": attachments_template}
 
         response = requests.post(SLACK_CHANNEL, data=json.dumps(payload))
     return HttpResponse(status=200)
