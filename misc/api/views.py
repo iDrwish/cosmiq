@@ -18,7 +18,7 @@ from rest_framework.authentication import SessionAuthentication, BasicAuthentica
 from datetime import datetime as dt
 
 
-SLACK_CHANNEL = 'https://hooks.slack.com/services/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'
+SLACK_CHANNEL = os.environ.get('ADJUST_EVENT')
 
 
 class CsrfExemptSessionAuthentication(SessionAuthentication):
